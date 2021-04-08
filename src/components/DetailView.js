@@ -1,9 +1,7 @@
 import React from 'react'
 import {
   BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
+  MobileView
 } from "react-device-detect";
 import {patientDetail} from '../data/patientDetail';
 
