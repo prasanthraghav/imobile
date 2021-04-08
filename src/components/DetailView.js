@@ -60,7 +60,7 @@ function DetailView(props) {
               </div>
             </div>
           </div>
-          <h4 className="m-4 text-xl font-semibold">Doctors</h4>
+          <h4 className="mx-4 mt-4 text-xl font-semibold">Doctors</h4>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-4">
             {data.doctors
               .sort((a, b) => a.priority > b.priority)
