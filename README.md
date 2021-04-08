@@ -3,9 +3,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Environment
-NodeJS 12.13.1 \
-React 17.0.2 \
-TailwindCSS 2.1.1
 
 |  Technology  | Version  |
 |--------------|----------|
