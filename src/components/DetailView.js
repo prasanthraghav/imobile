@@ -1,9 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Card from "./Card";
+import { useQuery } from "react-query";
 
-import { patientDetail } from "../data/patientDetail";
 import phImg from "../images/person-placeholder-image-transparent-hd-png-download.png";
+
+function fetchdata() {
+  return fetch("http://localhost:4000/patientDetail").then((res) => res.json());
+}
 
 function DetailView(props) {
   const history = useHistory();
@@ -11,6 +15,8 @@ function DetailView(props) {
   const onClickBackBtn = () => {
     history.push("/");
   };
+
+  const { isLoading, error, data } = useQuery("data", fetchdata);
 
   return (
     <div className="flex flex-col h-screen bg-gray-200">
@@ -27,44 +33,44 @@ function DetailView(props) {
           </h2>
         </nav>
       </header>
-      <div className="flex-1 h-full overflow-scroll">
-        <div className="bg-gray-50 p-4 text-center">
-          <div>
-            <div className="flex items-center justify-center place-self-center m-4">
-              <img
-                src={
-                  patientDetail.patientimg ? patientDetail.patientimg : phImg
-                }
-                alt={patientDetail.patientfirstName}
-                width="100px"
-                height="100px"
-                className="self-center rounded-full h-24 w-24 place-self-center"
-              />
-            </div>
-            <div className="text-center m-4">
-              <h3 className="text-3xl">
-                {patientDetail.patient.firstName}{" "}
-                <span className="font-bold">
-                  {patientDetail.patient.lastName}
-                </span>
-              </h3>
-              <p className="m-2">
-                Patient ID: {patientDetail.patient.patientID}
-              </p>
+      {isLoading && <div>loading...</div>}
+      {error && <div>Error in loading data!!!</div>}
+      {data && (
+        <div className="flex-1 h-full overflow-scroll">
+          <div className="bg-gray-50 p-4 text-center">
+            <div>
+              <div className="flex items-center justify-center place-self-center m-4">
+                <img
+                  src={
+                    data.patient.patientimg ? data.patient.patientimg : phImg
+                  }
+                  alt={data.patient.firstName}
+                  width="100px"
+                  height="100px"
+                  className="self-center rounded-full h-24 w-24 place-self-center"
+                />
+              </div>
+              <div className="text-center m-4">
+                <h3 className="text-3xl">
+                  {data.patient.firstName}{" "}
+                  <span className="font-bold">{data.patient.lastName}</span>
+                </h3>
+                <p className="m-2">Patient ID: {data.patient.patientID}</p>
+              </div>
             </div>
           </div>
+          <h4 className="m-4 text-xl font-semibold">Doctors</h4>
+          <div>
+            {data.doctors
+              .sort((a, b) => a.priority > b.priority)
+              .map((d, i) => (
+                <div className="bg-white m-4 rounded-lg p-4 shadow-lg" key={i}>
+                  <Card data={d} />
+                </div>
+              ))}
+          </div>
         </div>
-        <h4 className="m-4 text-xl font-semibold">Doctors</h4>
-        <div>
-          {patientDetail.doctors
-            .sort((a, b) => a.priority > b.priority)
-            .map((d, i) => (
-              <div className="bg-white m-4 rounded-lg p-4 shadow-lg" key={i}>
-                <Card data={d} />
-              </div>
-            ))}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
