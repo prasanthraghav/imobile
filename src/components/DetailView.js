@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Card from "./Card";
 import { useQuery } from "react-query";
 
-import phImg from "../images/person-placeholder-image-transparent-hd-png-download.png";
+import phImg from "../images/unknown_person.jpeg";
 
 function fetchdata() {
   return fetch("http://localhost:4000/patientDetail").then((res) => res.json());

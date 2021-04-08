@@ -1,7 +1,7 @@
 import React from "react";
 // import { MobileView } from "react-device-detect";
 import ordinal from "ordinal";
-import phImg from "../images/person-placeholder-image-transparent-hd-png-download.png";
+import phImg from "../images/unknown_person.jpeg";
 
 function Card({ data }) {
   const { phone, sms, mail, tag, priority, firstName, lastName, photo } = data;

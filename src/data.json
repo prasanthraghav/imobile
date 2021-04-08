@@ -106,7 +106,7 @@
       {
         "phone": "+1-650-513-0524",
         "sms": "+1-650-513-0524",
-        "mail": "doctor@example.com",
+        "mail": "saffron@example.com",
         "scheduleName": "Surgeon",
         "tag": "Surgeon",
         "priority": 1,
@@ -121,6 +121,9 @@
       },
       {
         "doctorID": 4,
+        "phone": "+1-426-513-0524",
+        "sms": "+1-567-513-0524",
+        "mail": "adam@example.com",
         "scheduleName": "Surgeon",
         "tag": "Surgeon",
         "priority": 2,

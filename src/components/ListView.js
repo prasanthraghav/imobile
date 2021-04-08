@@ -20,8 +20,13 @@ function ListView() {
   return (
     <div className="flex flex-col h-screen bg-gray-200">
       <header className="">
-        <nav className="bg-gray-800">
-          <h2 className="text-white p-3 text-3xl">iMobile</h2>
+        <nav className="bg-gray-800 flex">
+          <h2 className="text-white p-3 text-3xl flex-1">iMobile</h2>
+          <div className="place-self-center p-4">
+            <button className="outline-none text-white mr-10">
+              <i className="fa fa-search"></i>
+            </button>
+          </div>
         </nav>
       </header>
       {isLoading && <div>loading...</div>}
