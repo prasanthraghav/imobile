@@ -10,6 +10,7 @@ function fetchdata() {
 }
 
 function DetailView(props) {
+  // const { id } = useParams();
   const history = useHistory();
 
   const onClickBackBtn = () => {
@@ -60,11 +61,11 @@ function DetailView(props) {
             </div>
           </div>
           <h4 className="m-4 text-xl font-semibold">Doctors</h4>
-          <div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 p-4">
             {data.doctors
               .sort((a, b) => a.priority > b.priority)
               .map((d, i) => (
-                <div className="bg-white m-4 rounded-lg p-4 shadow-lg" key={i}>
+                <div className="bg-white rounded-lg p-4 shadow-lg" key={i}>
                   <Card data={d} />
                 </div>
               ))}
